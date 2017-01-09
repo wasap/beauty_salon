@@ -1,0 +1,95 @@
+.body{
+  background-image: url(../../public/img/salon.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: background .4s ease;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.mainTitle {
+  font-size: 47px;
+  text-align: center;
+  margin-top: calc(60vh - 169px);
+  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+  color: #f9acd2;
+}
+
+
+
+.service {
+  &s{
+    display: flex;
+    flex-direction: row;
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &Container {
+    flex: 1;
+    margin: 0 30px;
+    @media screen and (max-width: 800px) {
+      margin: 30px 0;
+      width: 85%;
+    }
+    min-height: 60vh;
+  }
+  &Link, &Link:hover, &Link:visited {
+    text-decoration: none;
+  }
+  &LinkText {
+    text-align: center;
+    color: #e8e8e8;
+    text-shadow: 0 0 3px blue, 0 0 4px pink;
+    font-weight: bold;
+    font-size: 33px;
+  }
+}
+
+.review {
+  &s{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  background: white;
+  padding: 20px;
+  margin: 20px 0;
+  &Img {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+  }
+  &Author{
+    font-weight: bold;
+    display: inline;
+  }
+  &Date{
+    color: rgba(0, 0, 0, 0.51);
+    display: inline;
+  }
+}
+
+.article{
+  &s{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  padding: 20px;
+  background: white;
+  &Title{
+    text-align: center;
+    font-weight: bold;
+  }
+  &Date{
+    color: rgba(0, 0, 0, 0.44);
+  }
+}
+

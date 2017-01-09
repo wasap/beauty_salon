@@ -1,0 +1,43 @@
+[
+  {
+    "path": "/",
+    "page": "./pages/home",
+    "chunk": "main",
+    "data": {
+      "articles": "GET /json/news.json",
+      "services": "GET /json/services.json",
+      "reviews": "GET /json/reviews.json"
+    }
+  },
+  {
+    "path": "/error",
+    "page": "./pages/error",
+    "chunk": "main"
+  },
+  {
+    "path": "/about",
+    "page": "./pages/about",
+    "data":{
+      "workers":"GET /json/workers.json"
+    },
+    "chunk":"about"
+  },
+  {
+    "path": "/terms",
+    "page": "./pages/terms",
+    "chunk":"terms"
+  },
+  {
+    "path": "/gallery",
+    "page": "./pages/gallery",
+    "chunk":"gallery"
+  },
+  {
+    "path": "/services/:name?",
+    "page": "./pages/services",
+    "data":{
+      "services": "GET /json/services.json"
+    },
+    "chunk":"services"
+  }
+]
