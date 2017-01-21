@@ -14,7 +14,7 @@ import s from './styles.css';
 
 class AboutPage extends React.Component {
   static propTypes = {
-    workers: React.PropTypes.array.isRequired
+    workers: React.PropTypes.array.isRequired,
   };
 
   render() {
@@ -26,12 +26,12 @@ class AboutPage extends React.Component {
         </div>
         <div className={`${s.full} ${s.Page2}`}>
           <h2>Наші працівники</h2>
-          {this.props.workers.map((w,i)=>
-          <div className={s.workerContainer} key={i}>
-            <div>{w.photo}</div>
-            <div>{w.name}</div>
-            <div>{w.text}</div>
-          </div>
+          {this.props.workers.map((w, i) =>
+            <div className={s.workerContainer} key={i}>
+              <div>{w.photo}</div>
+              <div>{w.name}</div>
+              <div>{w.text}</div>
+            </div>
           )}
         </div>
       </Layout>

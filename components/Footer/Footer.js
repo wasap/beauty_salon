@@ -9,16 +9,13 @@
  */
 
 import React from 'react';
-import Link from '../Link';
-import s from './Footer.css'
+import s from './Footer.css';
 
 function Footer() {
   return (
     <footer className={s.root}>
-      <Link to="/terms">Умови використання</Link>
-      <div className={s.social}>
-        <a href="http://vk.com" target="_blank">vk
-      </a>
+      <div className={s.text}>
+        <span className={s.copyright}>© 2016 </span>Офіційний сайт Мар'яни Михайлової
       </div>
     </footer>
   );

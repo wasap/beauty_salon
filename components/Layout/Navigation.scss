@@ -1,6 +1,7 @@
 .nav{
   display: flex;
   flex-direction: row;
+  float: right;
   @media screen and (max-width: 800px) {
     flex-direction: column;
     position: absolute;
@@ -9,7 +10,7 @@
     background: white;
   }
   >a{
-    padding: 0 10px;
+    padding: 0 20px;
     @media screen and (max-width: 800px) {
       padding: 10px;
       border: 1px solid;
@@ -31,4 +32,16 @@
   .hidden {
     display: none;
   }
+}
+.link,.link:hover, .link:visited{
+  text-decoration: none;
+  color: #999994;
+  &.active{
+    color:black;
+    font-weight: bold;
+  }
+}
+.container{
+  align-self: flex-end;
+  flex: 1;
 }

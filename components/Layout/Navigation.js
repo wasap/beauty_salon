@@ -10,33 +10,48 @@
 
 import React from 'react';
 import Link from '../Link';
-import s from './Navigation.scss'
+import s from './Navigation.scss';
 
 class Navigation extends React.Component {
-  state = {
-    opened: false
+  constructor() {
+    super();
+    const links = [
+      { to: '/', text: 'Головна', active: s.selected },
+      { to: '/services', text: 'Послуги' },
+      { to: '/gallery', text: 'Портфоліо' },
+      { to: '/contacts', text: 'Контакти' },
+    ];
+    links.forEach(l => {
+      if (l.to === location.pathname) {
+        l.active = s.active;
+      }
+    });
+    this.state = {
+      opened: false,
+      links,
+    };
   }
-  toggle = () =>{
+
+  toggle = () => {
     this.setState({
-      opened: !this.state.opened
-    })
+      opened: !this.state.opened,
+    });
   }
-  hide = ()=>{
+  hide = () => {
     this.setState({
-      opened: false
-    })
+      opened: false,
+    });
   }
 
   render() {
     return (
       <div className={s.container}>
-      <div className={s.open} onClick={this.toggle}/>
-      <nav className={`${s.nav} ${this.state.opened?s.opened:s.hidden}`} onClick={this.hide} >
-        <Link className="mdl-navigation__link" to="/">Головна</Link>
-        <Link className="mdl-navigation__link" to="/about">Про нас</Link>
-        <Link className="mdl-navigation__link" to="/services">Сервiси</Link>
-        <Link className="mdl-navigation__link" to="/gallery">Наші роботи</Link>
-      </nav>
+        <div className={s.open} onClick={this.toggle} />
+        <nav className={`${s.nav} ${this.state.opened ? s.opened : s.hidden}`} onClick={this.hide} >
+        {this.state.links.map((x, key) =>
+          <Link className={`${s.link} ${x.active}`} to={x.to} key={key}>{x.text}</Link>
+        )}
+        </nav>
       </div>
     );
   }

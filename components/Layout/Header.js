@@ -10,21 +10,13 @@
 
 import React from 'react';
 import Navigation from './Navigation';
-import Link from '../Link';
 import s from './Header.css';
 
-class Header extends React.Component {
-
-  render() {
-    return (
-      <header className={s.header}>
-        <a className={s.call} href="tel:+380630000000">+38(063)000-00-00</a>
-        <div className="location">м. Хмельницький</div>
-        <Navigation/>
-      </header>
-    );
-  }
-
-}
+const Header = () => (
+  <header className={s.header}>
+    <div >Мар'яна Михайлова</div>
+    <Navigation />
+  </header>
+);
 
 export default Header;

@@ -8,111 +8,122 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Layout from '../../components/Layout';
 import s from './styles.scss';
 import Link from '../../components/Link';
+import { connect } from 'react-redux';
+import { getProfile, getServices } from '../../core/info';
 
 class HomePage extends React.Component {
-
-  static propTypes = {
-    articles: PropTypes.array.isRequired,
-    services: PropTypes.array.isRequired,
-    reviews: PropTypes.array.isRequired,
-  };
-  state = {
-    bgImg: '/img/salon.jpg'
+  static propTypes ={
+    dispatch: React.PropTypes.func,
+    profile: React.PropTypes.object,
+    services: React.PropTypes.array,
   }
-
-  componentWillUpdate(){
-    document.body.style.backgroundImage=(this.state.bgImg);
-  }
-
   componentDidMount() {
-    document.title = 'Салон краси у Мар\'яни';
+    document.title = 'Офіційний сайт Мар\'яни Михайлової';
     document.body.classList.add(s.body);
-    window.addEventListener('scroll',this.setBgImg);
+    this.props.dispatch(getProfile());
+    this.props.dispatch(getServices());
   }
-  componentWillUnmount(){
+  componentWillUnmount() {
     document.body.classList.remove(s.body);
-    document.body.removeAttribute('style');
-    window.removeEventListener('scroll',this.setBgImg)
-  }
-  setBgImg = ()=>{
-    const top =  document.body.scrollTop;
-    const height = window.screen.availHeight - 120;
-    switch (true){
-      case top < height:
-        this.setState({
-          bgImg: 'url(/img/salon.jpg)'
-        });
-        break;
-      case top>height && top <height*2:
-        this.setState({
-          bgImg: 'url(/img/brushes.jpg)'
-        });
-        break;
-      case top>height*2 && top < height*3:
-        this.setState({
-          bgImg: 'url(/img/reviews.jpg)'
-        });
-        break;
-      case top>height*3:
-        this.setState({
-          bgImg: 'url(/img/Uzor.jpg)'
-        });
-        break;
-    }
   }
 
   render() {
     return (
       <Layout className={s.content}>
-        <div className={`full`}>
-          <h2 className={s.mainTitle}>Вас вітає салон краси у Мар'яни</h2>
+        <div className={s.full}>
+          <div className={s.nameHeader}>
+            <div className={s.nameHeaderHolder}>
+              <div className={s.nameHeaderText}>{this.props.profile.name}</div>
+              <div className={s.nameHeaderDescription}>{this.props.profile.role}</div>
+            </div>
+          </div>
         </div>
-        <div className={`full`}>
-          <h2>Наші сервіси</h2>
+        <div className={s.white}>
+          <h2 className={s.aboutTitle}>{this.props.profile.role} {this.props.profile.name}</h2>
+          <div className={s.tableAbout}>
+            <div className={s.tableAboutCol}>
+              <img src={this.props.profile.img} width="100%" alt="profile" />
+              <br />
+              <b>{this.props.profile.name}</b>
+              <div>{this.props.profile.role}</div>
+              <br />
+              <b>Мої контакти</b>
+              <br />
+              <span>{this.props.profile.phone}</span>
+              <a href={this.props.profile.vk_url}>
+                <div className={s.vkIcon} />
+              </a>
+              <br />
+              <br />
+              <b>Карьєра</b>
+              <br />
+              {this.props.profile.career}
+              <br />
+              <br />
+              <b>Навчання та досягнення</b>
+              <br />
+              {this.props.profile.achievements}
+            </div>
+            <div className={s.tableAboutCol}>
+              <h3>Про мене</h3>
+              {this.props.profile.about_text}
+            </div>
+          </div>
+          <br />
+          <br />
           <div className={s.services}>
-          {this.props.services.map((service,i)=>
-            <div className={s.serviceContainer} key={i} style={{background:`url(${service.img}) center/cover no-repeat`}}>
+          {this.props.services.map((service, i) =>
+            <div
+              className={s.serviceContainer}
+              key={i}
+            >
+              <div
+                className={s.serviceImage}
+                style={{ background: `url(${service.img}) center/cover no-repeat` }}
+              />
               <Link className={s.serviceLink} to={`/services/${service.url}`}>
                 <div className={s.serviceLinkText}>{service.name}</div>
               </Link>
             </div>)}
           </div>
-        </div>
-        <div className={`full`}>
-          <h2 >Останні відгуки</h2>
-          <div className={s.reviews}>
-            {this.props.reviews.map((r,i)=>
-              <div className={s.review} key={i}>
-                <div className={s.reviewImg} style={{backgroundImage:`url(${r.img})`}}></div>
-                <div className={s.reviewAuthor}>{r.author}&nbsp;</div>
-                <div className={s.reviewDate}>{r.date}</div>
-                <div className={s.reviewRating}>{r.rating}/5</div>
-                <div className={s.reviewBody}>{r.body}</div>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className={`full`}>
-        <h2>Новини</h2>
-        <div className={s.articles}>
-          {this.props.articles.map((article, i) =>
-            <div className={s.article} key={i}>
-              <div className={s.articleDate}>{article.date}</div>
-              <div className={s.articleTitle}>{article.title}</div>
-              <div>{article.body}</div>
-            </div>
-          )}
-        </div>
+          <br />
+          <br />
+          {/*<h2 >Останні відгуки</h2>*/}
+          {/*<div className={s.reviews}>*/}
+            {/*{this.props.reviews.map((r, i) =>*/}
+              {/*<div className={s.review} key={i}>*/}
+                {/*<div className={s.reviewImg} style={{ backgroundImage: `url(${r.img})` }}></div>*/}
+                {/*<div className={s.reviewAuthor}>{r.author}&nbsp;</div>*/}
+                {/*<div className={s.reviewDate}>{r.date}</div>*/}
+                {/*<div className={s.reviewRating}>{r.rating}/5</div>*/}
+                {/*<div className={s.reviewBody}>{r.body}</div>*/}
+              {/*</div>*/}
+            {/*)}*/}
+          {/*</div>*/}
+          {/*<h2>Новини</h2>*/}
+          {/*<div className={s.articles}>*/}
+            {/*{this.props.articles.map((article, i) =>*/}
+              {/*<div className={s.article} key={i}>*/}
+                {/*<div className={s.articleDate}>{article.date}</div>*/}
+                {/*<div className={s.articleTitle}>{article.title}</div>*/}
+                {/*<div>{article.body}</div>*/}
+              {/*</div>*/}
+            {/*)}*/}
+          {/*</div>*/}
         </div>
 
       </Layout>
     );
   }
-
 }
+const mapState = (state) => ({
+  profile: state.infoReducer.profile,
+  services: state.infoReducer.services,
+});
 
-export default HomePage;
+
+export default connect(mapState)(HomePage);

@@ -17,6 +17,8 @@
     "react-mdl": "^1.6.1",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
+    "sass-loader": "^4.1.1",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
@@ -87,7 +89,15 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "rules": {
+      "no-param-reassign": [
+        0
+      ],
+      "react/prefer-stateless-function": [
+        0
+      ]
+    }
   },
   "stylelint": {
     "extends": "stylelint-config-standard",

@@ -14,25 +14,19 @@ import Header from './Header';
 import Footer from '../Footer';
 import s from './Layout.css';
 
-class Layout extends React.Component {
-
-  static propTypes = {
-    className: PropTypes.string,
-  };
-
-  render() {
-    return (
-      <div className="mdl-layout mdl-js-layout"   >
-        <div className="mdl-layout__inner-container">
-          <Header />
-          <main className="mdl-layout__content">
-            <div {...this.props} className={cx(s.content, this.props.className)} />
-            <Footer />
-          </main>
-        </div>
-      </div>
-    );
-  }
-}
+const Layout = (props) => (
+  <div className="mdl-layout mdl-js-layout">
+    <div className="mdl-layout__inner-container">
+      <Header />
+      <main className="mdl-layout__content">
+        <div {...props} className={cx(s.content, props.className)} />
+        <Footer />
+      </main>
+    </div>
+  </div>
+);
+Layout.propTypes = {
+  className: PropTypes.string,
+};
 
 export default Layout;

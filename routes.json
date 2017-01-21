@@ -2,12 +2,7 @@
   {
     "path": "/",
     "page": "./pages/home",
-    "chunk": "main",
-    "data": {
-      "articles": "GET /json/news.json",
-      "services": "GET /json/services.json",
-      "reviews": "GET /json/reviews.json"
-    }
+    "chunk": "main"
   },
   {
     "path": "/error",
@@ -15,17 +10,12 @@
     "chunk": "main"
   },
   {
-    "path": "/about",
-    "page": "./pages/about",
+    "path": "/contacts",
+    "page": "./pages/contacts",
     "data":{
       "workers":"GET /json/workers.json"
     },
-    "chunk":"about"
-  },
-  {
-    "path": "/terms",
-    "page": "./pages/terms",
-    "chunk":"terms"
+    "chunk":"contacts"
   },
   {
     "path": "/gallery",

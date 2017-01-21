@@ -1,11 +1,20 @@
 .body{
-  background-image: url(../../public/img/salon.jpg);
+  background-image: url(../../public/img/woman-in-forest.jpg);
+  //background-color: blueviolet;
   background-repeat: no-repeat;
-  background-position: center;
   background-size: cover;
-  transition: background .4s ease;
   background-attachment: fixed;
   height: 100vh;
+}
+
+.full{
+  min-height: 100vh;
+  padding: 58px 10% 0;
+  position: relative;
+}
+.white{
+  padding: 0 40px;
+  background: white;
 }
 
 .mainTitle {
@@ -16,20 +25,43 @@
   color: #f9acd2;
 }
 
+.aboutTitle{
+  text-transform: capitalize;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+}
+.tableAbout{
+  display: flex;
+  &Col{
+    flex: 1;
+    margin: 0 20px;
+    background: #fafafa;
+    padding: 10px;
+    h3{
+      margin: 0;
+    }
+  }
+}
 
 
 .service {
   &s{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     @media screen and (max-width: 800px) {
       flex-direction: column;
       align-items: center;
     }
   }
   &Container {
-    flex: 1;
+    border: 1px solid rgba(0, 0, 0, 0.21);
+    padding: 10px;
     margin: 0 30px;
+    &:hover{
+      background: rgba(189, 189, 189, 0.05);
+    }
     @media screen and (max-width: 800px) {
       margin: 30px 0;
       width: 85%;
@@ -45,6 +77,14 @@
     text-shadow: 0 0 3px blue, 0 0 4px pink;
     font-weight: bold;
     font-size: 33px;
+  }
+  &Image{
+    width: 240px;
+    height:240px;
+    border-radius: 120px;
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -93,3 +133,37 @@
   }
 }
 
+
+.nameHeader{
+  border: 1px solid white;
+  padding: 15px;
+  position: relative;
+  left: 50%;
+  top: calc(50vh - 78px);
+  transform: translate(-50%,-50%);
+  display: inline-block;
+  &Holder{
+    background: rgba(255, 255, 255, 0.65);
+    padding: 40px;
+  }
+  &Text{
+    font-weight: bold;
+    font-size: 42px;
+    margin: 0;
+    padding: 15px 0;
+    text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+    color: #f9acd2;
+  }
+  &Description{
+    text-align: center;
+  }
+}
+
+.vkIcon{
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-left: 5px;
+  background: url(../../public/img/Vk-icon.png) center/cover no-repeat;
+  vertical-align: -3px;
+}

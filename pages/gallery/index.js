@@ -1,11 +1,11 @@
-import Layout from '../../components/Layout'
+import Layout from '../../components/Layout';
 import React from 'react';
 
 class galeryPage extends React.Component {
-  render(){
-    return <Layout>
+  render() {
+    return (<Layout>
       <h1>Галерея</h1>
-    </Layout>
+    </Layout>);
   }
 
 }
