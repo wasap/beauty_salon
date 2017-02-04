@@ -1,4 +1,4 @@
-serverless salon site
+serverless salon site based on kriasoft starter kit with redux
 
 
 ### License

@@ -1,20 +1,27 @@
 [
   {
-    "name":"Макіяж",
+    "name":"Професійний макіяж",
+    "title": "Всі види професійного макіяжу",
+    "description":"заполни слова про макияж",
     "img":"/img/eyes.jpg",
-    "url":"markup",
-    "prices": {
-      "помада": "30 грн",
-      "тіні": "20 грн"
-    }
-  },
-  {
-    "name":"Зачіска",
-    "img":"/img/hair.jpg",
-    "url":"hair",
-    "prices": {
-      "завивка": "30 грн",
-      "випрямлення": "20 грн"
-    }
+    "url":"/services#markup",
+    "details":[
+      {
+        "title": "СВАДЕБНЫЙ МАКИЯЖ",
+        "photo": "http://www.mega-svadba.com/images/photos/medium/article37.jpg"
+      },
+      {
+        "title": "ПРАЗДНИЧНЫЙ ВЫПУСКНОЙ МАКИЯЖ",
+        "photo": "https://24smi.org/public/media/app/public/media/uploads/975695.jpg"
+      },
+      {
+        "title": "ЛИФТИНГ МАКИЯЖ",
+        "photo": "http://pomolodet.ru/wp-content/uploads/2016/01/d37f62f30e87ff645682e76898527621.jpg"
+      },
+      {
+        "title": "ДНЕВНОЙ, ДЕЛОВОЙ МАКИЯЖ",
+        "photo": "http://www.kuponika.ru/img/actions/651/n_dd08d4ac456_310.jpg"
+      }
+    ]
   }
 ]

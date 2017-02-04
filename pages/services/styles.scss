@@ -1,0 +1,27 @@
+@import '../home/styles.scss';
+.body{
+  background-image: url(../../public/img/Uzor.jpg);
+}
+.center {
+  text-align: center;
+  padding: 20px;
+}
+
+.details{
+  display: flex;
+  flex-flow: row wrap;
+  &_container{
+    padding: 15px;
+    flex-grow: 1;
+    width: 33%;
+    text-align: center;
+  }
+  &_img{
+    width: 80%;
+    display: inline-block;
+    height: 200px;
+  }
+  &_text{
+    display: inline-block;
+  }
+}
