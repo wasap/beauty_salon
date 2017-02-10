@@ -4,7 +4,7 @@
     "title": "Всі види професійного макіяжу",
     "description":"заполни слова про макияж",
     "img":"/img/eyes.jpg",
-    "url":"/services#markup",
+    "id": "markup",
     "details":[
       {
         "title": "СВАДЕБНЫЙ МАКИЯЖ",
@@ -20,6 +20,31 @@
       },
       {
         "title": "ДНЕВНОЙ, ДЕЛОВОЙ МАКИЯЖ",
+        "photo": "http://www.kuponika.ru/img/actions/651/n_dd08d4ac456_310.jpg"
+      }
+    ]
+  },
+  {
+    "name":"Наращивание бровей",
+    "title": "Все виды наращивания бровей",
+    "description":"заполни слова про брови",
+    "img":"http://women-rules.ru/pictures/10_c/30_c/157_a/2_modnie-brovi.jpg",
+    "id": "brov",
+    "details":[
+      {
+        "title": "свадебные брови",
+        "photo": "http://www.mega-svadba.com/images/photos/medium/article37.jpg"
+      },
+      {
+        "title": "праздничные брови",
+        "photo": "https://24smi.org/public/media/app/public/media/uploads/975695.jpg"
+      },
+      {
+        "title": "лифтинг брови",
+        "photo": "http://pomolodet.ru/wp-content/uploads/2016/01/d37f62f30e87ff645682e76898527621.jpg"
+      },
+      {
+        "title": "дневные, деловые брови",
         "photo": "http://www.kuponika.ru/img/actions/651/n_dd08d4ac456_310.jpg"
       }
     ]

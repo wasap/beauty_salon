@@ -5,6 +5,7 @@
 .center {
   text-align: center;
   padding: 20px;
+  margin: 0;
 }
 
 .details{
@@ -14,7 +15,9 @@
     padding: 15px;
     flex-grow: 1;
     width: 33%;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   &_img{
     width: 80%;
@@ -22,6 +25,56 @@
     height: 200px;
   }
   &_text{
-    display: inline-block;
+    text-align: center;
+  }
+}
+
+.brands{
+  display: flex;
+  flex-flow: row wrap;
+  &_img{
+    margin: 10px;
+    flex-grow: 1;
+    max-width: 100%;
+    max-height: 20vh;
+    object-fit: contain;
+  }
+}
+
+.reviews{
+  display: flex;
+  flex-flow: row wrap;
+  &_box{
+    width: 33%;
+    margin: 10px;
+    height: 300px;
+    flex: 1;
+    position: relative;
+  }
+  &_title{
+    text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+    color: #f9acd2;
+    font-weight: bold;
+  }
+  &_img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: 0 0;
+    &:hover+.reviews_hidden{
+      display: block;
+    }
+  }
+  &_hidden{
+    position: absolute;
+    background: rgba(255, 255, 255, 0.43);
+    width: 100%;
+    padding: 10px;
+    display: none;
+    top: 0;
+    left:0;
+    &:hover{
+      display: block;
+    }
   }
 }

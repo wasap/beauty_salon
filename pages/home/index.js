@@ -85,7 +85,7 @@ class HomePage extends React.Component {
                 className={s.serviceImage}
                 style={{ background: `url(${service.img}) center/cover no-repeat` }}
               />
-              <Link className={s.serviceLink} to={service.url}>
+              <Link className={s.serviceLink} to={`/services#${service.id}`}>
                 <div className={s.serviceLinkText}>{service.name}</div>
               </Link>
             </div>)}
