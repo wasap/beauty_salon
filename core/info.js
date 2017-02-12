@@ -2,6 +2,7 @@ export const MY_PROFILE = 'MY_PROFILE';
 export const MY_SERVICES = 'MY_SERVICES';
 export const MY_BRANDS = 'MY_BRANDS';
 export const MY_REVIEWS = 'MY_REVIEWS';
+export const MY_PHOTOS = 'MY_PHOTOS';
 
 export const infoReducer = (state = {
   profile: {},
@@ -9,7 +10,8 @@ export const infoReducer = (state = {
   brands: {
     photos: [],
   },
-  reviews: {list:[]},
+  reviews: { list: [] },
+  photos: [],
 }, action) => {
   switch (action.type) {
     case MY_PROFILE:
@@ -20,6 +22,8 @@ export const infoReducer = (state = {
       return { ...state, brands: action.data };
     case MY_REVIEWS:
       return { ...state, reviews: action.data };
+    case MY_PHOTOS:
+      return { ...state, photos: action.data };
     default:
       return state;
   }
@@ -64,5 +68,15 @@ export const getReviews = () => async (dispatch, getState) => {
   dispatch({
     type: MY_REVIEWS,
     data: reviews,
+  });
+};
+export const getPhotos = () => async (dispatch, getState) => {
+  if (getState().infoReducer.photos.length) {
+    return;
+  }
+  const photos = await fetch('/json/gallery.json').then(r => r.json());
+  dispatch({
+    type: MY_PHOTOS,
+    data: photos,
   });
 };

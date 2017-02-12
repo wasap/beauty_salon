@@ -1,0 +1,14 @@
+.photos{
+  display: flex;
+  flex-wrap: wrap;
+  &_item{
+    max-width: 30vw;
+    max-height: 30vh;
+    object-fit: contain;
+    margin: 15px;
+  }
+}
+.title{
+  padding: 15px;
+  margin: 0;
+}
