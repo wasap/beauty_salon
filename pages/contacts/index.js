@@ -10,29 +10,29 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import s from './styles.css';
+import s from './styles.scss';
+import { getProfile } from '../../core/info';
+import { connect } from 'react-redux';
 
 class AboutPage extends React.Component {
   static propTypes = {
-    workers: React.PropTypes.array.isRequired,
+    dispatch: React.PropTypes.func.isRequired,
+    profile: React.PropTypes.object,
   };
+
+  componentDidMount() {
+    this.props.dispatch(getProfile());
+  }
 
   render() {
     return (
-      <Layout className={s.content}>
-        <div className={`${s.full} ${s.Page1}`}>
-          <h2>Контакти</h2>
-          телефон +3806300000000 карта
-        </div>
-        <div className={`${s.full} ${s.Page2}`}>
-          <h2>Наші працівники</h2>
-          {this.props.workers.map((w, i) =>
-            <div className={s.workerContainer} key={i}>
-              <div>{w.photo}</div>
-              <div>{w.name}</div>
-              <div>{w.text}</div>
-            </div>
-          )}
+      <Layout>
+        <div className={s.content}>
+          <h3 className={s.title}>Контакти</h3>
+          <span>{this.props.profile.phone}</span>
+          <a href={this.props.profile.vk_url}>
+            <div className={s.vkIcon} />
+          </a>
         </div>
       </Layout>
     );
@@ -40,4 +40,6 @@ class AboutPage extends React.Component {
 
 }
 
-export default AboutPage;
+const mapState = (state) => ({profile: state.infoReducer.profile});
+
+export default connect(mapState)(AboutPage);

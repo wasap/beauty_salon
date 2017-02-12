@@ -12,9 +12,6 @@
   {
     "path": "/contacts",
     "page": "./pages/contacts",
-    "data":{
-      "workers":"GET /json/workers.json"
-    },
     "chunk":"contacts"
   },
   {
@@ -23,11 +20,8 @@
     "chunk":"gallery"
   },
   {
-    "path": "/services/:name?",
+    "path": "/services/",
     "page": "./pages/services",
-    "data":{
-      "services": "GET /json/services.json"
-    },
     "chunk":"services"
   }
 ]

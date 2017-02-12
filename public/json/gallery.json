@@ -1,4 +1,11 @@
-[
-  "http://wobs.ua/content/uploads/images/koshach_mak.jpg",
-  "http://lorempixel.com/1000/600/nature/1/"
-]
+{
+  "title": "Галерея",
+  "img": [
+    "http://wobs.ua/content/uploads/images/koshach_mak.jpg",
+    "https://s-media-cache-ak0.pinimg.com/originals/3b/8c/bf/3b8cbfbbe08896d9b648e5906b288aed.jpg",
+    "http://images.nationalgeographic.com/wpf/media-live/photos/000/886/overrides/sunrise-cuernos-del-paine-patagonia_88629_990x742.jpg",
+    "https://iso.500px.com/wp-content/uploads/2016/06/stock-photo-142869191-1-1500x1000.jpg",
+    "http://images6.fanpop.com/image/photos/39500000/photo-1433878455169-4698e60005b1-maria560-39538711-1000-675.jpg",
+    "http://ochepyatki.ru/upfiles/albums/2506/f_62380.jpg"
+  ]
+}

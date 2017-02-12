@@ -11,7 +11,7 @@ export const infoReducer = (state = {
     photos: [],
   },
   reviews: { list: [] },
-  photos: [],
+  photos: {img:[]},
 }, action) => {
   switch (action.type) {
     case MY_PROFILE:
@@ -71,7 +71,7 @@ export const getReviews = () => async (dispatch, getState) => {
   });
 };
 export const getPhotos = () => async (dispatch, getState) => {
-  if (getState().infoReducer.photos.length) {
+  if (getState().infoReducer.photos.img.length) {
     return;
   }
   const photos = await fetch('/json/gallery.json').then(r => r.json());

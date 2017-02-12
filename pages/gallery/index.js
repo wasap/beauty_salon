@@ -8,50 +8,79 @@ import Modal from 'react-modal';
 class galeryPage extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
-    photos: React.PropTypes.array.isRequired,
+    photos: React.PropTypes.object.isRequired,
   }
   state = {
     modalOpen: false,
-    modalSrc: '',
-    currentImgIndex: 0,
+    imgIndex: 0,
   }
 
   componentDidMount() {
     this.props.dispatch(getPhotos());
   }
 
-  showModal = (src, currentImgIndex) => () => {
+  showModal = (imgIndex) => () => {
+    window.addEventListener('keydown', this.keysEvents)
     this.setState({
       modalOpen: true,
-      modalSrc: src,
-      currentImgIndex,
+      imgIndex,
     });
   }
 
   closeModal = () => {
+    window.removeEventListener('keydown', this.keysEvents);
     this.setState({
       modalOpen: false,
-      modalSrc: '',
     });
   }
 
   scrollImg = (next) => () => {
-    if (next){
+    if (next) {
+      if (this.props.photos.img[this.state.imgIndex + 1]) {
+        this.setState({
+          imgIndex: this.state.imgIndex + 1,
+        });
+      } else {
+        this.setState({
+          imgIndex: 0,
+        });
+      }
+    } else {
+      if (this.props.photos.img[this.state.imgIndex - 1]) {
+        this.setState({
+          imgIndex: this.state.imgIndex - 1,
+        });
+      } else {
+        this.setState({
+          imgIndex: this.props.photos.img.length - 1,
+        });
+      }
+    }
+  }
 
+  keysEvents = (e) => {
+    switch (e.keyCode) {
+      case 37:
+        this.scrollImg(false)();
+        break;
+      case 39:
+        this.scrollImg(true)();
+        break;
+      default:
     }
   }
 
   render() {
     return (<Layout>
-      <h2 className={s.title}>Галерея</h2>
+      <h2 className={s.title}>{this.props.photos.title}</h2>
       <div className={s.photos}>
-      {this.props.photos.map((f, key) =>
+      {this.props.photos.img.map((f, key) =>
         <img
           key={key}
           className={s.photos_item}
           src={f}
           role="presentation"
-          onClick={this.showModal(f, key)}
+          onClick={this.showModal(key)}
         />
       )}
       </div>
@@ -59,12 +88,16 @@ class galeryPage extends React.Component {
         isOpen={this.state.modalOpen}
         onRequestClose={this.closeModal}
         contentLabel="Modal"
+        className={s.modal}
       >
         <div className={s.modal_box}>
-          <div className={s.modal_close} onClick={this.closeModal()} />
-          <img src={this.state.modalSrc} className={s.madal_body} role="presentation" />
-          <div className={s.modal_prev} onClick={this.scroll_img(true)} />
-          <div className={s.modal_next} onClick={this.scroll_img(false)} />
+          <img
+            src={this.props.photos.img[this.state.imgIndex]}
+            className={s.modal_img} role="presentation"
+          />
+          <div className={s.modal_prev} onClick={this.scrollImg(false)} />
+          <div className={s.modal_next} onClick={this.scrollImg(true)} />
+          <div className={s.modal_close} onClick={this.closeModal} />
         </div>
       </Modal>
     </Layout>);
